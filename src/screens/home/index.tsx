@@ -1,12 +1,13 @@
 import {View, Text } from "react-native";
 import React from "react";
 
+import { ScreenStyles } from "../../styles/style";
 
 
 const Home = () => {
     return(
-    <View style={{marginTop: 60 }}>
-        <Text style={{textAlign:"center"}}>home</Text>
+    <View style={ScreenStyles.Container}>
+        <Text style={ScreenStyles.Text}>home</Text>
     </View>
     )
 }
