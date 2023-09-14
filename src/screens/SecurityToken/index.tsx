@@ -3,6 +3,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { useFonts, Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from "@react-navigation/native";
 
 const SecurityToken = () => {
     
@@ -18,7 +19,7 @@ const [fontLoaded] = useFonts({
     if(!fontLoaded){
         return null;
     }
-    
+    const navigation = useNavigation();
     return(
         <LinearGradient colors={['#9370DB', '#C7B6EA']} style={{ flex: 1 }}>
         <View style={ScreenStyles.container}>
@@ -27,7 +28,7 @@ const [fontLoaded] = useFonts({
         <View  style={ScreenStyles.containerForm}>
             <TextInput style={ScreenStyles.input}></TextInput>
             <Text style={ScreenStyles.title}>digite o token de segurança</Text>
-            <TouchableOpacity style={ScreenStyles.button}>
+            <TouchableOpacity style={ScreenStyles.button} onPress={() => navigation.navigate('Home')}>
                 <Text style={ScreenStyles.buttonText}>Confirmar</Text>
             </TouchableOpacity>
             
