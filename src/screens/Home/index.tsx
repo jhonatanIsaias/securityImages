@@ -36,7 +36,7 @@ const Home = () => {
        style={{marginTop:"25%"}}
       />
          <TouchableOpacity style={ScreenStyles.button} onPress={() => {
-                navigation.navigate('SecurityToken');
+                navigation.navigate('SendFotos');
             }}>
                 <Text style={ScreenStyles.buttonText}>Tirar Foto</Text>
             </TouchableOpacity>
