@@ -5,11 +5,12 @@ import { StyleSheet } from 'react-native';
 import DatePicker from 'react-native-modern-datepicker';
 import { getFormatedDate } from 'react-native-modern-datepicker';
 
+
 const DateScreen = () => {
   const [openStartDatePicker, setOpenStartDatePicker] = useState(false);
   const today = new Date();
   const startDate = getFormatedDate(today,'dd/MM/yyyy');
-  const [selectedStartDate, setSelectedStartDate] = useState('');
+  const [selectedStartDate, setSelectedStartDate] = useState(startDate);
   const [startedDate, setStartedDate] = useState('');
 
   function handleChangeStartDate() {
@@ -49,6 +50,8 @@ const DateScreen = () => {
                   minimumDate={startDate}
                   selected={startedDate}
                   onDateChanged={handleChangeStartDate}
+                  showTimeSelect
+                  dateFormat="dd/MM/yyyy"
                   onSelectedChange={(date) => setSelectedStartDate(date)}
                   options={{
                     backgroundColor: '#FFFFFF',
@@ -59,10 +62,13 @@ const DateScreen = () => {
                     textSecondaryColor: '#865FD6',
                     format: startDate
                   }}
+                  
+                  
                 />
                 <TouchableOpacity onPress={handleOnPressStartDate}>
-                  <Text style={{ color: 'black' }}>Fechar</Text>
+                  <Text style={{ color: '#865FD6',marginTop:-30, }}>Fechar</Text>
                 </TouchableOpacity>
+                
               </View>
             </View>
           </Modal>
@@ -89,7 +95,7 @@ const ScreenStyles = StyleSheet.create({
         justifyContent: "center",
       },
       modalView: {
-        marginBottom:80,
+        marginBottom:70,
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 20,
