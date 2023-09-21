@@ -1,12 +1,13 @@
 import { View, Text, TouchableOpacity, TextInput} from "react-native";
-import React from "react";
+import React from 'react';
 import { StyleSheet } from "react-native";
 import { useFonts, Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Icon } from "react-native-elements";
+//import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-import DateTimePicker from'@react-native-community/datetimepicker';
-import {useState, useEffect} from "react";
+import DateScreen from "../Date";
+
+
 
 const SendFotos = () => {
 
@@ -22,10 +23,11 @@ const SendFotos = () => {
     if (!fontLoaded) {
         return null;
     }
+    
     const navigation = useNavigation();
-   // const [date, setDate] = useState(new Date());
-    //const [showPicker,setShowPicker] = useState(false);
+   
     return (
+      
         <LinearGradient colors={['#9370DB', '#C7B6EA']} style={{ flex: 1 }}>
             <View style={{flex:0.2}}>
             </View>
@@ -37,19 +39,22 @@ const SendFotos = () => {
                 <Text style={ScreenStyles.title}>Descrição:</Text>
                 <TextInput style={ScreenStyles.inputDesc}></TextInput>
                 <Text style={ScreenStyles.title}>Data:</Text>
-               
+
+                <DateScreen />
+
             </View>
             <View style={ScreenStyles.containerButtons}>
                 <TouchableOpacity style={ScreenStyles.button} onPress={() => {
-                    navigation.navigate('SecurityToken');
+                  
                 }}>
                     <Text style={ScreenStyles.buttonText}>Enviar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={ScreenStyles.button} onPress={() => {
-                    navigation.navigate('SecurityToken');
+                   
                 }}>
                     <Text style={ScreenStyles.buttonText}>Cancelar</Text>
                 </TouchableOpacity>
+
             </View>
 
         </LinearGradient>
@@ -113,7 +118,44 @@ const ScreenStyles = StyleSheet.create({
     },
     containerButtons:{
         flexDirection: 'row'
-    }
+    },
+    dateComponent:{
+        width:350,
+        color: '#865FD6',
+        backgroundColor: '#FFFFF'
+    },
+    textHeader: {
+        fontSize: 36,
+        marginVertical: 60,
+        color: "#111",
+      },
+      textSubHeader: {
+        fontSize: 25,
+        color: "#111",
+      },
+      inputBtn: {
+        borderWidth: 1,
+        borderRadius: 4,
+        borderColor: "#222",
+        height: 50,
+        paddingLeft: 8,
+        fontSize: 18,
+        justifyContent: "center",
+        marginTop: 14,
+      },
+      centeredView: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      },
+      modalView: {
+        margin: 20,
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 20,
+        padding: 35,
+        width: "90%",
+      }
 });
 
 export default SendFotos;

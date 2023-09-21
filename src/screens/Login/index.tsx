@@ -85,7 +85,7 @@ const ScreenStyles = StyleSheet.create({
     button:{
         backgroundColor: '#6935D3',
         width: '100%',
-        borderRadius:4,
+        borderRadius:6,
         paddingVertical:8,
         marginTop:14,
         justifyContent: 'center',
