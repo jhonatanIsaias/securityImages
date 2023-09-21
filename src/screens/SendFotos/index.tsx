@@ -23,7 +23,7 @@ const SendFotos = () => {
         return null;
     }
     const navigation = useNavigation();
-    const [date, setDate] = useState(new Date());
+   // const [date, setDate] = useState(new Date());
     //const [showPicker,setShowPicker] = useState(false);
     return (
         <LinearGradient colors={['#9370DB', '#C7B6EA']} style={{ flex: 1 }}>
@@ -37,14 +37,6 @@ const SendFotos = () => {
                 <Text style={ScreenStyles.title}>Descrição:</Text>
                 <TextInput style={ScreenStyles.inputDesc}></TextInput>
                 <Text style={ScreenStyles.title}>Data:</Text>
-
-                <DateTimePicker 
-                 mode="date"
-                 display="spinner"
-                 value={date}
-                />
-                <TextInput placeholder="dd/MM/yyyy" style={ScreenStyles.input}></TextInput>
-              
                
             </View>
             <View style={ScreenStyles.containerButtons}>

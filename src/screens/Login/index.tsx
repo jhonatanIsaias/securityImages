@@ -5,6 +5,7 @@ import { useFonts, Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from "@react-navigation/native";
 
+
 const Login = () => {
     
 const [fontLoaded] = useFonts({
@@ -31,6 +32,7 @@ const [fontLoaded] = useFonts({
             <Text style={ScreenStyles.title}>Senha</Text>
             <TextInput placeholder="Digite sua senha..." style={ScreenStyles.input}></TextInput>
             <TouchableOpacity style={ScreenStyles.button} onPress={() => {
+                    
                 navigation.navigate('SecurityToken');
             }}>
                 <Text style={ScreenStyles.buttonText}>Acessar</Text>
