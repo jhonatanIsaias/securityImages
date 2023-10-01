@@ -1,11 +1,11 @@
-import { View, Text, TouchableOpacity, TextInput} from "react-native";
+import { View, Text, TouchableOpacity, TextInput,Modal} from "react-native";
 import React from 'react';
 import { StyleSheet } from "react-native";
 import { useFonts, Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
 import { LinearGradient } from 'expo-linear-gradient';
 //import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-import DateScreen from "../Date";
+import DateScreen from "../../components/Date";
 
 
 
@@ -38,9 +38,10 @@ const SendFotos = () => {
                 <TextInput style={ScreenStyles.input}></TextInput>
                 <Text style={ScreenStyles.title}>Descrição:</Text>
                 <TextInput style={ScreenStyles.inputDesc}></TextInput>
-                <Text style={ScreenStyles.title}>Data:</Text>
-
+               
                 <DateScreen />
+                
+               
 
             </View>
             <View style={ScreenStyles.containerButtons}>
@@ -87,6 +88,7 @@ const ScreenStyles = StyleSheet.create({
         fontFamily: 'Quicksand_700Bold',
         color: '#FFF',
         fontSize: 18,
+      
 
     },
     containerForm:{
