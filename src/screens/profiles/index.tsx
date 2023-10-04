@@ -1,9 +1,10 @@
-import { View, Image, TouchableOpacity,Text,TextInput } from "react-native";
+import { View, Image, TouchableOpacity,Text } from "react-native";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { useFonts, Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from "@react-navigation/native";
+import * as Animatable from 'react-native-animatable';
 
 
 const Profile = () => {
@@ -24,8 +25,8 @@ const Profile = () => {
     return (
         <LinearGradient colors={['#9370DB', '#C7B6EA']} style={{ flex: 1 }}>
              <View style={{flex: 1}}>
-                <View>
-                    
+                <View style={{flex: 1}}>
+                    <Image source={require("../../components/img/Profile.png")} style={ScreenStyles.logoProfile}/>
                 </View>
              <View  style={ScreenStyles.containerForm}>
             <Text style={ScreenStyles.title}>Nome do usuário:</Text>
@@ -53,7 +54,6 @@ const ScreenStyles = StyleSheet.create({
     },
     containerForm:{
         alignSelf: 'center',
-        marginTop:250,
        borderRadius:15,
         paddingStart: '5%',
         paddingEnd: '5%',
@@ -76,6 +76,7 @@ const ScreenStyles = StyleSheet.create({
         borderRadius:12,
         paddingVertical:8,
         marginTop:30,
+        marginBottom:60,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -101,6 +102,14 @@ const ScreenStyles = StyleSheet.create({
     },
     containerID:{
         flexDirection: 'row'
+    },
+    logoProfile:{
+        alignItems:'center',
+        alignSelf: 'center',
+        height:200,
+        width:200,
+        marginTop:60,
+        
     }
 });
 
