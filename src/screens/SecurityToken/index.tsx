@@ -63,7 +63,8 @@ const ScreenStyles = StyleSheet.create({
         borderTopLeftRadius:25,
         borderTopRightRadius: 25,
         paddingStart: '5%',
-        paddingEnd: '5%'
+        paddingEnd: '5%',
+        marginTop:80
     },
     title:{
         textAlign:'center',

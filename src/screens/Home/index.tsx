@@ -57,6 +57,7 @@ const ScreenStyles = StyleSheet.create({
         paddingHorizontal: 10,
         borderRadius: 8,
         margin: 10,
+        marginTop:70
       },
       searchBarInput: {
         flex: 1,

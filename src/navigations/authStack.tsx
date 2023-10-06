@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 
 export default function AuthStackComponent() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown:false}}>
       <Stack.Screen name="InicialPage" component={InicialPage} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="SecurityToken" component={SecurityToken} />

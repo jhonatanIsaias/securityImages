@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator();
 export default function StackComponent() {
   return (
     <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{headerShown:false}}>
           <Stack.Screen name="home" component={Home}/>
         </Stack.Navigator>
     </NavigationContainer>

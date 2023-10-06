@@ -66,6 +66,7 @@ const ScreenStyles = StyleSheet.create({
     containerForm:{
        
         flex:1,
+        marginTop:70,
         borderTopLeftRadius:25,
         borderTopRightRadius: 25,
         paddingStart: '5%',

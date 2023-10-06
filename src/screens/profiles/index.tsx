@@ -108,7 +108,7 @@ const ScreenStyles = StyleSheet.create({
         alignSelf: 'center',
         height:200,
         width:200,
-        marginTop:60,
+        marginTop:150,
         
     }
 });

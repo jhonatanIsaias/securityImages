@@ -18,7 +18,7 @@ export default function BottomTab() {
           paddingBottom:5,
           paddingTop:5
       }
-  }}
+  }} screenOptions={{headerShown:false}}
   >
       <Tab.Screen name="Home" component={Home} options={{
                 tabBarIcon:({size,color})=>(
