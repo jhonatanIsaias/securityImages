@@ -8,6 +8,7 @@ import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 
 
+
 const Home = () => {
 
     const [fontLoaded] = useFonts({
@@ -36,7 +37,7 @@ const Home = () => {
        style={{marginTop:"25%"}}
       />
          <TouchableOpacity style={ScreenStyles.button} onPress={() => {
-                navigation.navigate('SendFotos');
+                navigation.navigate('OpenCamera');
             }}>
                 <Text style={ScreenStyles.buttonText}>Tirar Foto</Text>
             </TouchableOpacity>

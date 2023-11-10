@@ -71,19 +71,6 @@ const ScreenStyles = StyleSheet.create({
         justifyContent: "center",
         color:"#000000"
        
-      },
-      centeredView: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      },
-      modalView: {
-        marginBottom:70,
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 20,
-        height:"80%",
-        width: "90%",
       }
 
 });

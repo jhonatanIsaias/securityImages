@@ -3,14 +3,41 @@ import React from 'react';
 import { StyleSheet } from "react-native";
 import { useFonts, Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
 import { LinearGradient } from 'expo-linear-gradient';
-//import { Icon } from "react-native-elements";
-import { useNavigation } from "@react-navigation/native";
 import DateScreen from "../../components/Date";
 
 
 
-const SendFotos = () => {
+const SendFotos = ({route} : any) => {
+  
+    const {photo} = route.params;
+   
+   
+    const sendRequestSaveImage = async (uri : string) =>{
+      console.log(uri)
+    
+        const file = new FormData();
 
+        const imageConfig = {
+          uri: uri,
+          type: 'image/jpg',
+          name: 'file.jpg',
+        };
+        
+        file.append('file',imageConfig)
+       
+             
+        return await fetch('http://192.168.0.103:3000',{
+          method: 'POST',
+          headers:{
+            'Content-Type':'multipart/form-data'
+          },
+          body: file
+          }).then(response => console.log(response));
+        
+     
+ 
+    }
+   
     const [fontLoaded] = useFonts({
 
         Quicksand_300Light,
@@ -23,8 +50,7 @@ const SendFotos = () => {
     if (!fontLoaded) {
         return null;
     }
-    
-    const navigation = useNavigation();
+   
    
     return (
       
@@ -41,22 +67,16 @@ const SendFotos = () => {
                
                 <DateScreen />
                 
-               
-
-            </View>
+                </View>
             <View style={ScreenStyles.containerButtons}>
-                <TouchableOpacity style={ScreenStyles.button} onPress={() => {
-                  
-                }}>
-                    <Text style={ScreenStyles.buttonText}>Enviar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={ScreenStyles.button} onPress={() => {
-                   
-                }}>
-                    <Text style={ScreenStyles.buttonText}>Cancelar</Text>
-                </TouchableOpacity>
-
-            </View>
+        <TouchableOpacity style={ScreenStyles.button} onPress={() => sendRequestSaveImage(photo)}>
+          <Text style={ScreenStyles.buttonText}>Enviar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={ScreenStyles.button} onPress={() => {}}>
+          <Text style={ScreenStyles.buttonText}>Cancelar</Text>
+       
+        </TouchableOpacity>
+      </View>
 
         </LinearGradient>
     )
@@ -72,6 +92,7 @@ const ScreenStyles = StyleSheet.create({
         borderRadius: 20
     },
     button: {
+        flex:1,
         backgroundColor: '#865FD6',
         width: '30%',
         alignSelf: "center",
@@ -96,21 +117,22 @@ const ScreenStyles = StyleSheet.create({
         borderTopLeftRadius:25,
         borderTopRightRadius: 25,
         paddingStart: '5%',
-        paddingEnd: '5%'
+        padding: 16, // Em vez de 'paddingStart' e 'paddingEnd'
     },
     input:{
         paddingLeft:10,
         borderRadius:15,
         backgroundColor:'#865FD6',
         height:30,
-        marginBottom:2,
-        fontSize:16 
+        marginBottom: 12,
+        fontSize:16, 
+        textAlign:"left"
     },
     inputDesc:{
         backgroundColor:'#865FD6',
         borderRadius:15,
         height:100,
-        marginBottom:2,
+        marginBottom: 12,
         fontSize:16 
     },
     title:{
