@@ -3,7 +3,7 @@ import {View,Platform,Pressable, TextInput} from 'react-native';
 import { StyleSheet } from 'react-native';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 
-const DateScreen = () => {
+const DateScreen = ({ onDateSelect }:any) => {
  
   const [date,setDate] = useState(new Date());
   const [showPicker,setShowPicker] =useState(false);
@@ -26,6 +26,7 @@ const DateScreen = () => {
     if(type == "set"){
         const currentDate = selectedDate;
         setDate(currentDate);
+        onDateSelect(currentDate.toISOString());
     }
     if(Platform.OS === 'android'){
       toglleDatePicker();

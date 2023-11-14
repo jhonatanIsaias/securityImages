@@ -1,19 +1,39 @@
-import { View, Text, TouchableOpacity, TextInput,Modal} from "react-native";
-import React from 'react';
+import { View, Text, TouchableOpacity, TextInput} from "react-native";
+import React, { useState } from 'react';
 import { StyleSheet } from "react-native";
 import { useFonts, Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
 import { LinearGradient } from 'expo-linear-gradient';
 import DateScreen from "../../components/Date";
-
+import { useNavigation } from "@react-navigation/native";
 
 
 const SendFotos = ({route} : any) => {
-  
+    const navigation = useNavigation();
     const {photo} = route.params;
+    const [clientToken,setClientToken] = useState('');
+    const [tags,setTags] = useState('');
+    const [description, setDescription] = useState('');
+    const [date,setDate] = useState('');
+
+    const [errorClientToken,setErrorClientToken] = useState('');
+    const [errorTags,setErrorTags] = useState('');
+    const [errorDescription, setErrorDescription] = useState('');
+    const [errorDate,setErrorDate] = useState('');
+    const [flag , setFlag] = useState(false);
+    
+    const handleDateSelect = (selectedDate:string) => {
+        setDate(selectedDate);
+    };
    
+    const verifyForm = ()=>{
+      return clientToken.trim() !== '' && tags.trim() !== '' && description.trim() !== '' &&  date.trim() !== ''
+        
+      
+    }
+ 
    
-    const sendRequestSaveImage = async (uri : string) =>{
-      console.log(uri)
+    const sendRequestSaveImage = async (clientToken:string,tags:string,description:string,date:string,uri:string) =>{
+     
     
         const file = new FormData();
 
@@ -24,6 +44,10 @@ const SendFotos = ({route} : any) => {
         };
         
         file.append('file',imageConfig)
+        file.append('clientToken',clientToken);
+        file.append('tags',tags);
+        file.append('description',description);
+        file.append('date',date);
        
              
         return await fetch('http://192.168.0.103:3000',{
@@ -59,17 +83,26 @@ const SendFotos = ({route} : any) => {
             </View>
             <View style={ScreenStyles.containerForm}>
                 <Text style={ScreenStyles.title}>Cliente Token:</Text>
-                <TextInput style={ScreenStyles.input}></TextInput>
+                <TextInput style={ScreenStyles.input} onChangeText={value => setClientToken(value)}></TextInput>
+                
                 <Text style={ScreenStyles.title}>Tags:</Text>
-                <TextInput style={ScreenStyles.input}></TextInput>
+                <TextInput style={ScreenStyles.input} onChangeText={value => setTags(value)}></TextInput>
+              
                 <Text style={ScreenStyles.title}>Descrição:</Text>
-                <TextInput style={ScreenStyles.inputDesc}></TextInput>
-               
-                <DateScreen />
+                <TextInput style={ScreenStyles.inputDesc} onChangeText={value => setDescription(value)}></TextInput>
+                
+                <DateScreen onDateSelect={handleDateSelect} />
+                
                 
                 </View>
             <View style={ScreenStyles.containerButtons}>
-        <TouchableOpacity style={ScreenStyles.button} onPress={() => sendRequestSaveImage(photo)}>
+        <TouchableOpacity disabled={!verifyForm()}   style={[
+    ScreenStyles.button,
+    { backgroundColor: !verifyForm() ? '#A7A7A7' : '#865FD6' },
+  ]} onPress={  () =>  {
+          sendRequestSaveImage(clientToken,tags,description,date,photo);
+          navigation.navigate('Home');
+        }}>
           <Text style={ScreenStyles.buttonText}>Enviar</Text>
         </TouchableOpacity>
         <TouchableOpacity style={ScreenStyles.button} onPress={() => {}}>
